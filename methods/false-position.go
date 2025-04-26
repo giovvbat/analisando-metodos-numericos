@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func FalsePosition(a float64, b float64, function func(float64) float64) (float64, int) {
+func FalsePosition(a, b float64, function func(float64) float64) (float64, int) {
 	x := (a*function(b) - b*function(a)) / (function(b) - function(a))
 	iterations := 0
 
@@ -28,7 +28,7 @@ func FalsePosition(a float64, b float64, function func(float64) float64) (float6
 	return x, iterations
 }
 
-func PrintFalsePosition(realRoot float64, a float64, b float64, function func(float64) float64) {
+func PrintFalsePosition(realRoot, a, b float64, function func(float64) float64) {
 	start := time.Now()
 	foundRoot, iterations := FalsePosition(a, b, function)
 	end := time.Now()

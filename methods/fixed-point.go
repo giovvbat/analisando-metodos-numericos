@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func FixedPoint(a float64, b float64, function func(float64) float64, functionFi func(float64) float64) (float64, int) {
+func FixedPoint(a, b float64, function, functionFi func(float64) float64) (float64, int) {
 	x := (a + b) / 2
 	iterations := 0
 
@@ -22,7 +22,7 @@ func FixedPoint(a float64, b float64, function func(float64) float64, functionFi
 	return x, iterations
 }
 
-func PrintFixedPoint(realRoot float64, a float64, b float64, function func(float64) float64, functionFi func(float64) float64) {
+func PrintFixedPoint(realRoot, a, b float64, function, functionFi func(float64) float64) {
 	start := time.Now()
 	foundRoot, iterations := FixedPoint(a, b, function, functionFi)
 	end := time.Now()

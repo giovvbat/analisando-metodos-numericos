@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func Newton(a float64, b float64, function func(float64) float64) (float64, int) {
+func Newton(a, b float64, function func(float64) float64) (float64, int) {
 	x := (a + b) / 2
 	iterations := 0
 
@@ -23,7 +23,7 @@ func Newton(a float64, b float64, function func(float64) float64) (float64, int)
 	return x, iterations
 }
 
-func PrintNewton(realRoot float64, a float64, b float64, function func(float64) float64) {
+func PrintNewton(realRoot, a, b float64, function func(float64) float64) {
 	start := time.Now()
 	foundRoot, iterations := Newton(a, b, function)
 	end := time.Now()

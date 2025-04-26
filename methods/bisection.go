@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func Bisection(a float64, b float64, function func(float64) float64) (float64, int) {
+func Bisection(a, b float64, function func(float64) float64) (float64, int) {
 	x := (a + b) / 2
 	iterations := 0
 
@@ -28,7 +28,7 @@ func Bisection(a float64, b float64, function func(float64) float64) (float64, i
 	return x, iterations
 }
 
-func PrintBisection(realRoot float64, a float64, b float64, function func(float64) float64) {
+func PrintBisection(realRoot, a, b float64, function func(float64) float64) {
 	start := time.Now()
 	foundRoot, iterations := Bisection(a, b, function)
 	end := time.Now()
