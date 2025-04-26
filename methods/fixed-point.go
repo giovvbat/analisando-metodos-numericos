@@ -1,8 +1,11 @@
 package methods
 
-import "math"
+import (
+	"analisando-metodos-numericos/functions"
+	"math"
+)
 
-func FixedPoint(a float64, b float64, function func(float64) float64, fi func(float64) float64) float64 {
+func FixedPoint(a float64, b float64, function func(float64) float64) float64 {
 	x := (a + b) / 2
 
 	for {
@@ -10,7 +13,7 @@ func FixedPoint(a float64, b float64, function func(float64) float64, fi func(fl
 			break
 		}
 
-		x = fi(x)
+		x = functions.ThirdFi(x)
 	}
 
 	return x

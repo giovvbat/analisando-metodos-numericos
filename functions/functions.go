@@ -21,3 +21,7 @@ func ThirdFi(x float64) float64 {
 func ThirdDerivative(x float64) float64 {
 	return 2*x + 1
 }
+
+func Derivative(x float64, function func(float64) float64) float64 {
+	return (function(x+math.SmallestNonzeroFloat64) - function(x)) / math.SmallestNonzeroFloat64
+}

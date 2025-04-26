@@ -2,7 +2,7 @@ package methods
 
 import "math"
 
-func Secant(a float64, b float64, function func(float64) float64, derivative func(float64) float64) float64 {
+func Secant(a float64, b float64, function func(float64) float64) float64 {
 	x := (a*function(b) - b*function(a)) / (function(b) - function(a))
 
 	for {

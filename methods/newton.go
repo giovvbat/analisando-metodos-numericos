@@ -1,8 +1,11 @@
 package methods
 
-import "math"
+import (
+	"analisando-metodos-numericos/functions"
+	"math"
+)
 
-func Newton(a float64, b float64, function func(float64) float64, derivative func(float64) float64) float64 {
+func Newton(a float64, b float64, function func(float64) float64) float64 {
 	x := (a + b) / 2
 
 	for {
@@ -10,7 +13,7 @@ func Newton(a float64, b float64, function func(float64) float64, derivative fun
 			break
 		}
 
-		x = x - function(x)/derivative(x)
+		x = x - function(x)/functions.ThirdDerivative(x)
 	}
 
 	return x
