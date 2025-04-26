@@ -18,10 +18,6 @@ func ThirdFi(x float64) float64 {
 	return 6 / (x + 1)
 }
 
-func ThirdDerivative(x float64) float64 {
-	return 2*x + 1
-}
-
 func Derivative(x float64, function func(float64) float64) float64 {
 	eps := math.Pow(10, -8)
 	return (function(x+eps) - function(x)) / eps
