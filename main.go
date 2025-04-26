@@ -8,5 +8,5 @@ import (
 
 func main() {
 	// exemplo de aplicação de um dos métodos:
-	fmt.Printf("%.5f\n", methods.Secant(-5, -1.5, functions.Third))
+	fmt.Printf("%.5f\n", methods.Newton(-10, 2.5, functions.Third))
 }

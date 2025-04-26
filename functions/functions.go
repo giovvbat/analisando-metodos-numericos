@@ -23,5 +23,6 @@ func ThirdDerivative(x float64) float64 {
 }
 
 func Derivative(x float64, function func(float64) float64) float64 {
-	return (function(x+math.SmallestNonzeroFloat64) - function(x)) / math.SmallestNonzeroFloat64
+	eps := math.Pow(10, -8)
+	return (function(x+eps) - function(x)) / eps
 }

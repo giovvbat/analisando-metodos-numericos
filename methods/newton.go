@@ -13,7 +13,7 @@ func Newton(a float64, b float64, function func(float64) float64) float64 {
 			break
 		}
 
-		x = x - function(x)/functions.ThirdDerivative(x)
+		x = x - function(x)/functions.Derivative(x, function)
 	}
 
 	return x
