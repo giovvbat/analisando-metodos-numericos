@@ -7,25 +7,20 @@ import (
 	"time"
 )
 
-func InverseQuadraticInterpolation(a, b float64, maxIterations int, function func(float64) float64) (float64, int, error) {
-	eps := math.Pow(10, -8)
+func InverseQuadraticInterpolation(a, b, prec float64, maxIterations int, function func(float64) float64) (float64, int, error) {
 	iterations := 0
 	c := (a + b) / 2
 
-	for {
-		if iterations >= maxIterations {
-			break
-		}
-
-		if math.Abs(function(a)) < eps {
+	for iterations < maxIterations {
+		if math.Abs(function(a)) < prec {
 			return a, iterations, nil
 		}
 
-		if math.Abs(function(b)) < eps {
+		if math.Abs(function(b)) < prec {
 			return b, iterations, nil
 		}
 
-		if math.Abs(function(c)) < eps {
+		if math.Abs(function(c)) < prec {
 			return c, iterations, nil
 		}
 
@@ -38,7 +33,7 @@ func InverseQuadraticInterpolation(a, b float64, maxIterations int, function fun
 		x := (function(b)*function(c))/((function(a)-function(b))*(function(a)-function(c)))*a + (function(a)*function(c))/((function(b)-function(a))*(function(b)-function(c)))*b + (function(a)*function(b))/((function(c)-function(a))*(function(c)-function(b)))*c
 		a, b, c = b, c, x
 
-		if math.Abs(function(x)) < eps {
+		if math.Abs(function(x)) < prec {
 			return x, iterations, nil
 		}
 
@@ -48,9 +43,9 @@ func InverseQuadraticInterpolation(a, b float64, maxIterations int, function fun
 	return 0, 0, errors.New("number of max iterations exceeded")
 }
 
-func PrintInverseQuadraticInterpolation(realRoot, a, b float64, maxInterations int, function func(float64) float64) {
+func PrintInverseQuadraticInterpolation(realRoot, a, b, prec float64, maxInterations int, function func(float64) float64) {
 	start := time.Now()
-	foundRoot, iterations, err := InverseQuadraticInterpolation(a, b, maxInterations, function)
+	foundRoot, iterations, err := InverseQuadraticInterpolation(a, b, prec, maxInterations, function)
 
 	if err != nil {
 		fmt.Printf("error while calculating root by Inverse Quadratic Interporlation method in range %.2f to %.2f\n: %s", a, b, err.Error())

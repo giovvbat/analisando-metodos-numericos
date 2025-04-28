@@ -6,15 +6,11 @@ import (
 	"time"
 )
 
-func Bisection(a, b float64, function func(float64) float64) (float64, int) {
+func Bisection(a, b, prec float64, function func(float64) float64) (float64, int) {
 	x := (a + b) / 2
 	iterations := 0
 
-	for {
-		if math.Abs(function(x)) <= math.Pow(10, -8) {
-			break
-		}
-
+	for math.Abs(function(x)) > prec {
 		if function(a)*function(x) < 0 {
 			b = x
 		} else {
@@ -28,9 +24,9 @@ func Bisection(a, b float64, function func(float64) float64) (float64, int) {
 	return x, iterations
 }
 
-func PrintBisection(realRoot, a, b float64, function func(float64) float64) {
+func PrintBisection(realRoot, a, b, prec float64, function func(float64) float64) {
 	start := time.Now()
-	foundRoot, iterations := Bisection(a, b, function)
+	foundRoot, iterations := Bisection(a, b, prec, function)
 	end := time.Now()
 	duration := end.Sub(start)
 	absoluteError := math.Abs(realRoot - foundRoot)

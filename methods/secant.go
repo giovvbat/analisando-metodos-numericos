@@ -6,15 +6,11 @@ import (
 	"time"
 )
 
-func Secant(a, b float64, function func(float64) float64) (float64, int) {
+func Secant(a, b, prec float64, function func(float64) float64) (float64, int) {
 	x := (a*function(b) - b*function(a)) / (function(b) - function(a))
 	iterations := 0
 
-	for {
-		if math.Abs(function(x)) <= math.Pow(10, -8) {
-			break
-		}
-
+	for math.Abs(function(x)) > prec {
 		iterations++
 		a = b
 		b = x
@@ -24,9 +20,9 @@ func Secant(a, b float64, function func(float64) float64) (float64, int) {
 	return x, iterations
 }
 
-func PrintSecant(realRoot, a, b float64, function func(float64) float64) {
+func PrintSecant(realRoot, a, b, prec float64, function func(float64) float64) {
 	start := time.Now()
-	foundRoot, iterations := Secant(a, b, function)
+	foundRoot, iterations := Secant(a, b, prec, function)
 	end := time.Now()
 	duration := end.Sub(start)
 	absoluteError := math.Abs(realRoot - foundRoot)
