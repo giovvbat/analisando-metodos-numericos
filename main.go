@@ -8,14 +8,9 @@ import (
 )
 
 func main() {
-	a, b, realRoot, prec := 1.0, 1.4, 2.0, math.Pow(10, -8)
-	maxIterations := 10000
+	a, b, realRoot, prec, maxIterations := 1.0, 1.4, 2.0, math.Pow(10, -8), 10000
 
-	for {
-		if b > 3 {
-			break
-		}
-
+	for b <= 3 {
 		if functions.Third(a)*functions.Third(b) < 0 {
 			methods.PrintBisection(realRoot, a, b, prec, functions.Third)
 			methods.PrintFalsePosition(realRoot, a, b, prec, functions.Third)
