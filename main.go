@@ -25,4 +25,5 @@ func main() {
 		a = a + 0.4
 		b = b + 0.4
 	}
+	methods.PrintInverseQuadraticInterpolation(0.0, 0.0, 3.0, math.Pow(10, -10), 10000, functions.SecondFourth)
 }
